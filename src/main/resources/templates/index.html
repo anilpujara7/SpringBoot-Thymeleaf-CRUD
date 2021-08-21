@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Employee List</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous"> 
+	
+	<link rel="stylesheet" th:href="@{css/style.css}" />
+	
+</head>
+<body>
+
+	<div align="center" class="container py-5">
+		<h2>Employee List</h2>
+		<table border="1" class="table table-bordered table-hover">
+
+			<thead>
+				<tr>
+					<th>Employee First Name</th>
+					<th>Employee Last Name</th>
+					<th>Employee Email</th>
+					<th colspan="2">Action</th>
+
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="emp:${list}">
+					<td th:text="${emp.fname}"></td>
+					<td th:text="${emp.lname}"></td>
+					<td th:text="${emp.email}"></td>
+					<td> <i class="fas fa-pen-nib fa-lg "></i><a th:href="@{/empFormUpdate/{id}(id=${emp.id}) }"
+						class="btn btn-success ">Update</a></td>
+					<td><i class="fas fa-trash-alt fa-lg "></i> <a th:href="@{/deleteEmp/{id}(id=${emp.id}) }"
+						class="btn btn-danger delete"> Delete</a></td>
+
+				</tr>
+
+			</tbody>
+
+
+
+
+		</table><i class="fas fa-user-plus fa-lg"></i>
+		<a th:href="@{/empForm}" class="btn btn-success"> Add Employee</a>
+	</div>
+
+
+
+</body>
+</html>
